@@ -142,22 +142,10 @@ function depurateContent($content) {
 //this is just for CDATA fields such as <itunes:summary> (long description in PG)
 function iTunesSummaryLinks($content) {
 	$content = htmlspecialchars_decode($content);
-	//tags that work in iTunes and iOS podcast app
-	$allowedTags = array("<a>","<p>","<ul>","<ol>","<li>"); 
-	$content = strip_tags($content,implode($allowedTags)); //implode = array to string
-	$tagExists = false;
-		foreach ($allowedTags as $singleTag)
-		{
-			//substr removes last character from tags, so attributes are accepted, e.g. <a> and <a href="">
-		    if (strpos($content, substr($singleTag, 0, -1)) === true) $tagExists = true;
-		}
-	if ($tagExists = true) {
-		$content = trim(preg_replace('/\s+/', ' ', $content)); //trim new lines
-		$content = '<![CDATA['.$content.']]>'; //CDATA Field
-	}
-	
+	$content = strip_tags($content,'<a>');
+	if (strpos($content,'</a>') !== false) $content = '<![CDATA['.$content.']]>'; //CDATA Field around hyperlinks
 	$content = ampersandEntitiesConvert($content);
-	return $content;
+return $content;
 }
 
 // to ensure compatibility of iTunes:summary and long description (support <a> tags but ampersand should be entities)
@@ -483,7 +471,7 @@ function showPodcastEpisodes($all,$category) {
 							//$resulting_episodes .= '<div class="row-fluid">';
 							$resulting_episodes .= '<div class="episode">';
 						}
-						$resulting_episodes .= '<div class="span6 col-md-6 6u episodebox">'; //open the single episode DIV
+						$resulting_episodes .= '<div class="span5 col-md-6 6u episodebox">'; //open the single episode DIV
 					}
 					//If old Theme engine for <2.0 themes retro compatibility.
 					else { 
@@ -521,11 +509,17 @@ function showPodcastEpisodes($all,$category) {
 
 
 					//// Short Description
-					$resulting_episodes .= '<p>'.$thisPodcastEpisodeData[1].'</p>';
+					$resulting_episodes .= '<p class=ep_desc>'.$thisPodcastEpisodeData[1].'</p>';
 
+					////Playes: audio (flash/html5) and video (html5), for supported files and browsers
+					//if audio and video streaming is enabled in PG options
+					if ($enablestreaming=="yes" AND !detectMobileDevice()) { 
+						$resulting_episodes .= showStreamingPlayers ($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter);
+					}
+					$isvideo = FALSE; //RESET isvideo for next episode
 
 					////Buttons (More, Download, Watch)
-					$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter,$thisPodcastEpisode[1],$enablestreaming);
+					///$resulting_episodes .= showButtons($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter,$thisPodcastEpisode[1],$enablestreaming);
 
 					
 					////Other details (file type, duration, bitrate, frequency)					
@@ -540,14 +534,6 @@ function showPodcastEpisodes($all,$category) {
 						$episodeDetails .= " (".$thisPodcastEpisodeData[13]." "._("kbps")." ".$thisPodcastEpisodeData[14]." "._("Hz").")";
 					}
 					$resulting_episodes .= '<p class="episode_info">'.$episodeDetails.'</p>';
-
-
-					////Playes: audio (flash/html5) and video (html5), for supported files and browsers
-					//if audio and video streaming is enabled in PG options
-					if ($enablestreaming=="yes" AND !detectMobileDevice()) { 
-						$resulting_episodes .= showStreamingPlayers ($thisPodcastEpisode[5],$thisPodcastEpisode[3],$url,$upload_dir,$episodesCounter);
-					}
-					$isvideo = FALSE; //RESET isvideo for next episode
 
 					
 					////Social networks and (eventual) embedded code
@@ -602,7 +588,7 @@ function showPodcastEpisodes($all,$category) {
 	else $thisCurrentPage = 1;
 
 	if (isset($episodesCounter) AND $episodesCounter > $episodeperpage) {
-		$finalOutputEpisodes .= '<div style="clear:both;"><p>';
+		$finalOutputEpisodes .= '<div class="row-fluid row" style="clear:both;"><p>';
 		
 		//Print page index and links
 		for ($onePage =1; $onePage <= $numberOfPages; $onePage++) {
@@ -1056,7 +1042,7 @@ function showStreamingPlayers($filenameWithoutExtension,$podcast_filetype,$url,$
 	
 	//// AUDIO PLAYER (MP3)
 		if ($browserAudioVideoSupport[0] == TRUE AND $podcast_filetype=="mp3") { //if browser supports HTML5
-		$showplayercode =	'<audio style="width:80%;" controls preload="none">
+		$showplayercode =	'<audio style="width:90%;" controls preload="none">
 			  <source src="'.$url.$upload_dir.$filenameWithoutExtension.'.mp3" type="audio/mpeg">
 			'._("Your browser does not support the audio player").'
 			</audio>';
@@ -1753,7 +1739,7 @@ $fileNamesList = readMediaDir ($absoluteurl,$upload_dir);
 			else $thisEpisodeShortDesc = _("Podcast Episode");
 			
 			// Use GETID3 Title and Artist to fill title and description automatically
-			$thisEpisodeData = array($thisEpisodeTitle,$thisEpisodeShortDesc,NULL,NULL,NULL,NULL,$explicit_podcast,NULL,NULL);
+			$thisEpisodeData = array($thisEpisodeTitle,$thisEpisodeShortDesc,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 			$episodeXMLDBAbsPath = $absoluteurl.$upload_dir.$episodeNewFileName.$filesuffix.'.xml';
 			//// Creating xml file associated to episode
