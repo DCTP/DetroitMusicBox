@@ -19,7 +19,7 @@ Help out with documentation and help/FAQ
 Provide event space for organizing storytelling events
 
 
-# Podcast Generator
+## Podcast Generator
 
 Podcast Generator (PG) is an open source Content Management System written in PHP 
 and specifically designed for podcast publishing. It provides the user with the tools 
@@ -32,7 +32,7 @@ times from Sourceforge servers](https://sourceforge.net/projects/podcastgen/file
 by some of the world's leading Hosting and NAS providers.
 
 
-## Podcstgen Documentation
+## Podcastgen Documentation
 A comprehensive documentation is available at: 
 http://podcastgenerator.net/documentation
 
