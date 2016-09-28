@@ -19,7 +19,7 @@ Help out with documentation and help/FAQ
 Provide event space for organizing storytelling events
 
 
-## Podcast Generator
+## Podcst Gerator
 
 Podcast Generator (PG) is an open source Content Management System written in PHP 
 and specifically designed for podcast publishing. It provides the user with the tools 
