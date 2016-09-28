@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PodcastGenerator>
+			<category>
+			<id>uncategorized</id>
+			<description>Uncategorized</description>
+			</category>
+			<category>
+			<id>stories</id>
+			<description>Stories</description>
+			</category>
+			<category>
+			<id>radio_shows</id>
+			<description>Radio Shows</description>
+			</category>
+			<category>
+			<id>poetry</id>
+			<description>Poetry</description>
+			</category>
+			<category>
+			<id>music</id>
+			<description>Music</description>
+			</category>
+		</PodcastGenerator>
