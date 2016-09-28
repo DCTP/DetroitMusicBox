@@ -1,3 +1,5 @@
+# Contributor Guidelines
+
 We’re working with The Detroit Digital Justice Coalition community and residents of Detroit neighborhoods to Facilitate the preservation of history through place-based storytelling so that People interested in preserving history in the face of gentrification can control the narratives of their own neighborhoods and spaces.
 
 We look forward to telling you about the project and hopefully bringing you onto the team. The Detroit Music Box Application was originally put together by by Anderson and Diana at the Detroit Community Technology Project, along with folks at CoOpen, using the Podcastgen open source software. After a successful (and still ongoing) run in the Cass Corridor neighborhood of Detroit, Michigan, Kristyn Sonnenberg, another member of the Detroit Community Technology Project team, joined the Music Box work. We wanted to open the project up for use in other communities around the world. This work was moved forward as part of the Mozilla Open Leadership training series.
