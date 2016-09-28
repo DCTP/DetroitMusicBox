@@ -1,0 +1,131 @@
+/*  Custom CSS for 
+	Podcast Generator
+*/
+body {
+	background: #D0D1D2;
+	font-family: arial;
+    padding-bottom: 0px;
+}
+.navbar-inverse .navbar-inner {
+    background-color: #414141;
+    background-image: none;
+    border-color: #252525;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+    color: #E3E4E2;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.row-fluid.category-menu {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+a.btn.btn-large.cat-btn {
+	width: 177px;	
+}
+.row-fluid.ice-player {
+    margin-bottom: 33px;
+}
+.episode_image {
+	width:80%;
+	margin-bottom:10px;
+	-webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.btn {
+	font-size:20px;
+	padding: 10px 24px;
+	margin-right: 20px
+}
+p.centered{
+	text-align: center;
+}
+.light-gray {
+	background: #E3E4E2;
+	padding: 12px;
+}
+.header-logo {
+    padding-bottom: 29px;
+    padding-top: 16px;
+}
+.btn-large {
+	border-radius:0px;
+	font-size: 18px;
+	padding: 14px 0px;
+}
+.btn {
+	background-image: none;
+	background-color: #E3E4E2;
+	border-color: #414141;
+	border-radius:0px
+}
+.podcast-tiles {
+    border-top: 1px solid #454545;
+}
+a {
+    color: #2BA4DD;
+    text-decoration: none;
+}
+i.fa.fa-search {
+    display: none;
+}
+i.fa.fa-download {
+    display: none;
+}
+audio {
+    margin-bottom: 14px;
+}
+h3.episode_title a {
+    font-size: 32px;
+}
+.episode_date {
+    margin-top: 5px;
+    font-size: 20px;
+    color: #333333;
+}
+.episode_info {
+    font-size: 0.9em;
+}
+.navbar .nav > li {
+    line-height: 0px;
+    font-size: 16px;
+}
+.navbar .nav .dropdown-toggle .caret {
+    margin-top: 0px;
+}
+li:first-child {
+    border-right: solid #ccc 1px;
+}
+.navbar-text {
+    margin-bottom: 0;
+    line-height: 0px;
+    color: #777777;
+    font-size: 16px;
+}
+.container.nav-bar-cont {
+    padding-top: 10px;
+}
+p.navbar-text.pull-right {
+    margin-top: 10px;
+}
+.episodebox {
+	margin-top: 32px;
+    margin-left: 73px;
+}
+footer {
+    background-color: #414141;
+}
+p.mb-footer.centered {
+    padding: 20px 0px;
+    color: #C6C4C3;
+    font-size: 22px;
+}
+p.centered.footer-about {
+    color: #E7E6D2;
+}
+a.btn.btn-warning.btn-large {
+    background-color: #F5943C;
+    width: 100%;
+    border: none;
+}
